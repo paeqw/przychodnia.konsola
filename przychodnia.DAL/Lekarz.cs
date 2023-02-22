@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace przychodnia.DAL
 {
-    internal class Lekarz
+    public class Lekarz
     {
         private String imie;
         private String nazwisko;
@@ -40,13 +40,12 @@ namespace przychodnia.DAL
             foreach(var el in napisy)
             {
                 if (string.IsNullOrEmpty(el)) break;
-                var wiersz = el.Split();
-                var imie = wiersz[0];
-                var nazwisko = wiersz[1];
-                for(int i = 3; i< wiersz.Length; i+=5) { 
+                var wiersz = el.Split(" ");
+                var imie = wiersz[1];
+                var nazwisko = wiersz[2];
+                for(int i = 5; i < wiersz.Length-5; i+=5) { 
                     var nazwa = wiersz[i];
-                    var rok = Convert.ToInt32(
-                        wiersz[i + 5]);
+                    var rok = Convert.ToInt32(wiersz[i + 5]);
 
                     Specjalizacja s = new(nazwa, rok);
                     specjalizacje.Add(s);

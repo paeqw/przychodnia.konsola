@@ -11,7 +11,7 @@
             this.rokUzyskania = rokUzyskania;
         }
         public String specjalizacjaJakoNaps() {
-            return $"{nazwaSpecjalizacji} uzyskana w roku {Convert.ToString(rokUzyskania)}";
+            return $"{nazwaSpecjalizacji} uzyskana w roku {Convert.ToString(rokUzyskania)} ";
         }
     }
 }
