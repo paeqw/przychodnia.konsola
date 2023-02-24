@@ -25,7 +25,7 @@ namespace przychodnia.DAL
             {
                 specjalizacjeString += el.specjalizacjaJakoNaps();
             }
-            return specjalizacjeString;
+            return specjalizacjeString + " \n";
         }
         public void zapiszLekarzaDoPliku(string path)
         {
@@ -34,7 +34,6 @@ namespace przychodnia.DAL
         public static List<Lekarz> czytajLekarzyZPliku(string path)
         {
             List<Lekarz> lekarze = new List<Lekarz>();
-            List<Specjalizacja> specjalizacje = new List<Specjalizacja>();
 
             var napisy = File.ReadAllLines(path);
             foreach(var el in napisy)
@@ -43,8 +42,11 @@ namespace przychodnia.DAL
                 var wiersz = el.Split(" ");
                 var imie = wiersz[1];
                 var nazwisko = wiersz[2];
-                for(int i = 5; i < wiersz.Length-5; i+=5) { 
-                    var nazwa = wiersz[i];
+                List<Specjalizacja> specjalizacje = new List<Specjalizacja>();
+                for (int i = 5; i < wiersz.Length-5; i+=5) { 
+                    var nazwa = wiersz[i+1];
+                    
+                    Console.WriteLine(wiersz[i + 5]);
                     var rok = Convert.ToInt32(wiersz[i + 5]);
 
                     Specjalizacja s = new(nazwa, rok);
