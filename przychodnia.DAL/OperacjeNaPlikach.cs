@@ -27,8 +27,6 @@ namespace przychodnia.DAL
                 for (int i = 5; i < wiersz.Length-5; i+=5)
                 {
                     var nazwa = wiersz[i+1];
-
-                    Console.WriteLine(wiersz[i + 5]);
                     var rok = Convert.ToInt32(wiersz[i + 5]);
 
                     Specjalizacja s = new(nazwa, rok);
